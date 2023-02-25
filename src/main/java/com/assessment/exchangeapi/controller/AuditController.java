@@ -60,8 +60,8 @@ public class AuditController {
         return ResponseEntity.ok(exchangeRateService.getData(to,from));
     }
 
-    @GetMapping("/exchangerates")
-    public ResponseEntity<Map<String, Double>> fetchDataByDate(@RequestParam(required = false) String date) throws InterruptedException, ExecutionException, IOException {
+    @GetMapping("/exchangerates/{date}")
+    public ResponseEntity<Map<String, Double>> fetchDataByDate(@PathVariable(required = false) String date) throws InterruptedException, ExecutionException, IOException {
         if(date == null) {
             date = LocalDate.now().toString();
         }
